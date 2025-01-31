@@ -19,6 +19,14 @@ let pipes = [];
 let score = 0;
 let isGameOver = false;
 
+// Load the cloud image with a check to ensure it's ready
+const cloudImage = new Image();
+cloudImage.src = 'cloud.png'; // Use your image path here
+cloudImage.onload = function() {
+    console.log("Cloud image loaded successfully!");
+    // Only start the game after the image is loaded
+};
+
 // Create initial pipes
 function createPipe() {
   const gapY = Math.random() * (canvas.height - PIPE_GAP - 100) + 50;
