@@ -25,6 +25,7 @@ cloudImage.src = 'cloud.png'; // Use your image path here
 cloudImage.onload = function() {
     console.log("Cloud image loaded successfully!");
     // Only start the game after the image is loaded
+    playButton.disabled = false;  // Enable play button once image is loaded
 };
 
 // Create initial pipes
@@ -154,6 +155,11 @@ function showReplayOption() {
 
 // Start the game when Play button is clicked
 playButton.addEventListener("click", () => {
+  if (!cloudImage.complete) {
+    console.log("Cloud image is not fully loaded yet.");
+    return;  // Prevent starting the game if image isn't loaded
+  }
+
   playButton.style.display = "none"; // Hide play button
   instructions.style.display = "none"; // Hide instructions
   startCountdown(); // Start countdown
