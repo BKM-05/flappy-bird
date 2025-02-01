@@ -10,14 +10,18 @@ const instructions = document.getElementById("instructions");
 const GRAVITY = 0.5;
 const FLAP = -10;
 const PIPE_WIDTH = 50;
-const PIPE_GAP = 150;
+const PIPE_GAP = 165;
 const PIPE_SPEED = 2;
 
 // Game variables
-let bird = { x: 50, y: 300, width: 30, height: 30, velocity: 0, color: "red" };
+let bird = { x: 50, y: 300, width: 50, height: 50, velocity: 0 }; // Adjust size of bird
 let pipes = [];
 let score = 0;
 let isGameOver = false;
+
+// Load bird image
+let birdImage = new Image();
+birdImage.src = "assets/birdy.png"; // Path to your bird image
 
 // Create initial pipes
 function createPipe() {
@@ -25,10 +29,9 @@ function createPipe() {
   pipes.push({ x: canvas.width, y: gapY });
 }
 
-// Draw the bird
+// Draw the bird using image
 function drawBird() {
-  ctx.fillStyle = bird.color;
-  ctx.fillRect(bird.x, bird.y, bird.width, bird.height);
+  ctx.drawImage(birdImage, bird.x, bird.y, bird.width, bird.height); // Use the bird image instead of fillRect
 }
 
 // Draw the pipes
@@ -111,7 +114,7 @@ function gameLoop() {
 
 // Reset the game
 function resetGame() {
-  bird = { x: 50, y: 300, width: 30, height: 30, velocity: 0, color: "red" };
+  bird = { x: 50, y: 300, width: 50, height: 50, velocity: 0 }; // Reset bird size
   pipes = [];
   score = 0;
   isGameOver = false;
