@@ -19,9 +19,15 @@ let pipes = [];
 let score = 0;
 let isGameOver = false;
 
-// Load bird image
+// Load bird and pipe images
 let birdImage = new Image();
 birdImage.src = "assets/birdy.png"; // Path to your bird image
+
+let topPipeImage = new Image();
+topPipeImage.src = "assets/top-pipe.png"; // Path to your top pipe image
+
+let bottomPipeImage = new Image();
+bottomPipeImage.src = "assets/bottom-pipe.png"; // Path to your bottom pipe image
 
 // Create initial pipes
 function createPipe() {
@@ -34,14 +40,13 @@ function drawBird() {
   ctx.drawImage(birdImage, bird.x, bird.y, bird.width, bird.height); // Use the bird image instead of fillRect
 }
 
-// Draw the pipes
+// Draw the pipes using images
 function drawPipes() {
-  ctx.fillStyle = "green";
   pipes.forEach(pipe => {
     // Top pipe
-    ctx.fillRect(pipe.x, 0, PIPE_WIDTH, pipe.y - PIPE_GAP);
+    ctx.drawImage(topPipeImage, pipe.x, 0, PIPE_WIDTH, pipe.y); // Draw the top pipe image
     // Bottom pipe
-    ctx.fillRect(pipe.x, pipe.y, PIPE_WIDTH, canvas.height - pipe.y);
+    ctx.drawImage(bottomPipeImage, pipe.x, pipe.y + PIPE_GAP, PIPE_WIDTH, canvas.height - pipe.y); // Draw the bottom pipe image
   });
 }
 
