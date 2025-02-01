@@ -4,29 +4,9 @@ body {
   align-items: center;
   justify-content: center;
   font-family: Arial, sans-serif;
-  background: linear-gradient(to bottom, #87CEEB, #B0E0E6); /* Sky gradient */
-  background-repeat: no-repeat;
-  background-attachment: fixed;
+  background-color: #87CEEB;
   margin: 0;
   height: 100vh;
-}
-
-/* Add animated clouds */
-body::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: url('https://png.pngtree.com/png-clipart/20220918/ourmid/pngtree-floating-realistic-clouds-png-image_6195497.png') repeat-x; /* cloud image */
-  animation: moveClouds 20s linear infinite;
-}
-
-/* Cloud animation */
-@keyframes moveClouds {
-  from { background-position: 100vw 50px; }
-  to { background-position: -100vw 50px; }
 }
 
 h1 {
