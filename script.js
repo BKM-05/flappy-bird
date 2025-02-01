@@ -10,41 +10,25 @@ const instructions = document.getElementById("instructions");
 const GRAVITY = 0.5;
 const FLAP = -10;
 const PIPE_WIDTH = 50;
-const PIPE_GAP = 200;
+const PIPE_GAP = 150;
 const PIPE_SPEED = 2;
 
 // Game variables
-let bird = { x: 50, y: 300, width: 50, height: 50, velocity: 0, image: new Image(), color: "red" };
+let bird = { x: 50, y: 300, width: 30, height: 30, velocity: 0, color: "red" };
 let pipes = [];
 let score = 0;
 let isGameOver = false;
-bird.image.src = "bird.png";  
-
-
-const MIN_PIPE_HEIGHT = 50; 
-const MAX_PIPE_HEIGHT = canvas.height - PIPE_GAP - 100; 
-
-function createPipe() {
-  
-  const topPipeHeight = Math.random() * (MAX_PIPE_HEIGHT - MIN_PIPE_HEIGHT) + MIN_PIPE_HEIGHT;
-
-  
-  const bottomPipeY = topPipeHeight + PIPE_GAP;
-
-  
-  pipes.push({ x: canvas.width, y: topPipeHeight, bottomY: bottomPipeY });
-}
-
 
 // Create initial pipes
 function createPipe() {
-  const gapY = Math.random() * (canvas.height - PIPE_GAP - 200) + 200;
+  const gapY = Math.random() * (canvas.height - PIPE_GAP - 100) + 50;
   pipes.push({ x: canvas.width, y: gapY });
 }
 
 // Draw the bird
 function drawBird() {
-  ctx.drawImage(bird.image, bird.x, bird.y, bird.width, bird.height);
+  ctx.fillStyle = bird.color;
+  ctx.fillRect(bird.x, bird.y, bird.width, bird.height);
 }
 
 // Draw the pipes
@@ -127,15 +111,11 @@ function gameLoop() {
 
 // Reset the game
 function resetGame() {
-  bird = { x: 50, y: 300, width: 50, height: 50, velocity: 0, image: new Image(), color: "red" };
-  bird.image.src = "bird.png";  // Ensure the bird image is reset
+  bird = { x: 50, y: 300, width: 30, height: 30, velocity: 0, color: "red" };
   pipes = [];
   score = 0;
   isGameOver = false;
-  canvas.style.display = "block";  // Ensure canvas is shown
-  replayButton.style.display = "none";  // Hide replay button
-  playButton.style.display = "none"; // Hide play button
-  instructions.style.display = "none"; // Hide instructions
+  canvas.style.display = "block";
   createPipe();
   gameLoop();
 }
@@ -153,7 +133,7 @@ function startCountdown() {
     } else {
       clearInterval(countdownInterval);
       countdownDisplay.style.display = "none";
-      canvas.style.display = "block"; // Show canvas when countdown ends
+      canvas.style.display = "block";
       gameLoop();
     }
   }, 1000);
@@ -161,7 +141,7 @@ function startCountdown() {
 
 // Show replay button after game over
 function showReplayOption() {
-  replayButton.style.display = "block";  // Show replay button
+  replayButton.style.display = "block";
 }
 
 // Start the game when Play button is clicked

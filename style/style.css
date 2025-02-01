@@ -1,54 +1,55 @@
-body {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-family: Arial, sans-serif;
-  background-color: #87CEEB;
-  margin: 0;
-  height: 100vh;
-}
-
-h1 {
-  margin: 10px 0;
-  color: #fff;
-}
-
-#gameCanvas {
-  border: 2px solid #000;
-  background-color: #87CEEB;
-}
-
-#score {
-  font-size: 18px;
-  color: #fff;
-  margin-top: 10px;
-}
-
-#instructions {
-  font-size: 20px;
-  color: #fff;
-  margin-top: 10px;
-}
-
-#playButton, #replayButton {
-  padding: 10px 20px;
-  font-size: 18px;
-  background-color: #4CAF50;
-  color: white;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  margin-top: 20px;
-}
-
-#playButton:hover, #replayButton:hover {
-  background-color: #45a049;
-}
-
-#countdown {
-  font-size: 48px;
-  font-weight: bold;
-  color: #fff;
-  margin-top: 20px;
-}
+body { 
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-family: Arial, sans-serif;
+    background-color: #87CEEB;
+    margin: 0;
+    height: 100vh;
+  }
+  
+  h1 {
+    margin: 10px 0;
+    color: #fff;
+  }
+  
+  #gameCanvas {
+    border: 2px solid #000;
+    background-color: #87CEEB;
+  }
+  
+  #score {
+    font-size: 18px;
+    color: #fff;
+    margin-top: 10px;
+  }
+  
+  #instructions {
+    font-size: 20px;
+    color: #fff;
+    margin-top: 10px;
+  }
+  
+  #playButton, #replayButton {
+    padding: 10px 20px;
+    font-size: 18px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 20px;
+  }
+  
+  #playButton:hover, #replayButton:hover {
+    background-color: #45a049;
+  }
+  
+  #countdown {
+    font-size: 48px;
+    font-weight: bold;
+    color: #fff;
+    margin-top: 20px;
+  }
+  
