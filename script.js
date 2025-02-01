@@ -50,6 +50,29 @@ function drawPipes() {
   });
 }
 
+// Check for collision with pipes
+function checkCollision(pipe) {
+  // Check if the bird hits the top pipe
+  if (
+    bird.x + bird.width > pipe.x && 
+    bird.x < pipe.x + PIPE_WIDTH &&
+    bird.y < pipe.y // Bird above the top pipe
+  ) {
+    return true;
+  }
+
+  // Check if the bird hits the bottom pipe
+  if (
+    bird.x + bird.width > pipe.x &&
+    bird.x < pipe.x + PIPE_WIDTH &&
+    bird.y + bird.height > pipe.y + PIPE_GAP // Bird below the bottom pipe
+  ) {
+    return true;
+  }
+
+  return false;
+}
+
 // Update the game state
 function update() {
   if (isGameOver) return;
@@ -74,11 +97,7 @@ function update() {
 
   // Collision detection
   pipes.forEach(pipe => {
-    if (
-      bird.x < pipe.x + PIPE_WIDTH &&
-      bird.x + bird.width > pipe.x &&
-      (bird.y < pipe.y - PIPE_GAP || bird.y + bird.height > pipe.y)
-    ) {
+    if (checkCollision(pipe)) {
       bird.color = "gray";  // Change color on collision
       isGameOver = true;
     }
