@@ -7,10 +7,10 @@ const scoreDisplay = document.getElementById("score");
 const instructions = document.getElementById("instructions");
 
 // Game constants
-const GRAVITY = 0.5;
-const FLAP = -10;
+const GRAVITY = 0.3;
+const FLAP = -8;
 const PIPE_WIDTH = 50;
-const PIPE_GAP = 165;
+const PIPE_GAP = 200;
 const PIPE_SPEED = 2;
 
 // Game variables
