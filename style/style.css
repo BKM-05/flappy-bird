@@ -1,61 +1,61 @@
 body { 
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    font-family: Arial, sans-serif;
-    /*background-color: #87CEEB;*/
-    background: url("clouds.png") no-repeat center center fixed ;
-    background-size: cover;
-    margin: 0;
-    height: 100vh;
-  }
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-family: Arial, sans-serif;
+  /*background-color: #87CEEB;*/
+  background: url("https://media3.giphy.com/media/v1.Y2lkPTc5MGI3NjExbjdzM2thNWt5N2FueG5zOXp1NTFkNHMycDZ6NDEyeXR1amFvYmtxaiZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/b5gHkkRGlC2fS/giphy.gif") center ;
+  background-size: cover;
+  margin: 0;
+  height: 100vh;
+}
+
+h1 {
+  margin: 10px 0;
+  color: #ffffff;
+}
+
+#gameCanvas {
+  border: 2px solid #000;
+  /*background-color: #87CEEB;*/
+  background: url("classic1.png")  ;
+  background-size: cover;
+  box-shadow: 0 0 10px rgb(26, 22, 92);
   
-  h1 {
-    margin: 10px 0;
-    color: #fff;
-  }
   
-  #gameCanvas {
-    border: 2px solid #000;
-    /*background-color: #87CEEB;*/
-    background: url("classic1.png")  ;
-    background-size: cover;
-    
-    
-  }
-  
-  #score {
-    font-size: 18px;
-    color: #fff;
-    margin-top: 10px;
-  }
-  
-  #instructions {
-    font-size: 20px;
-    color: #fff;
-    margin-top: 10px;
-  }
-  
-  #playButton, #replayButton {
-    padding: 10px 20px;
-    font-size: 18px;
-    background-color: #4CAF50;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    margin-top: 20px;
-  }
-  
-  #playButton:hover, #replayButton:hover {
-    background-color: #45a049;
-  }
-  
-  #countdown {
-    font-size: 48px;
-    font-weight: bold;
-    color: #fff;
-    margin-top: 20px;
-  }
-  
+}
+
+#score {
+  font-size: 18px;
+  color: #1aa1e0;
+  margin-top: 10px;
+}
+
+#instructions {
+  font-size: 20px;
+  color: #fff;
+  margin-top: 10px;
+}
+
+#playButton, #replayButton {
+  padding: 10px 20px;
+  font-size: 18px;
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-top: 20px;
+}
+
+#playButton:hover, #replayButton:hover {
+  background-color: #257529;
+}
+
+#countdown {
+  font-size: 48px;
+  font-weight: bold;
+  color: #066656;
+  margin-top: 20px;
+}
