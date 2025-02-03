@@ -7,17 +7,27 @@ const scoreDisplay = document.getElementById("score");
 const instructions = document.getElementById("instructions");
 
 // Game constants
-const GRAVITY = 0.5;
-const FLAP = -10;
+const GRAVITY = 0.3;
+const FLAP = -8;
 const PIPE_WIDTH = 50;
-const PIPE_GAP = 150;
+const PIPE_GAP = 200;
 const PIPE_SPEED = 2;
 
 // Game variables
-let bird = { x: 50, y: 300, width: 30, height: 30, velocity: 0, color: "red" };
+let bird = { x: 50, y: 300, width: 50, height: 50, velocity: 0 }; // Adjust size of bird
 let pipes = [];
 let score = 0;
 let isGameOver = false;
+
+// Load bird and pipe images
+let birdImage = new Image();
+birdImage.src = "assets/birdy.png"; // Path to your bird image
+
+let topPipeImage = new Image();
+topPipeImage.src = "assets/top-pipe.png"; // Path to your top pipe image
+
+let bottomPipeImage = new Image();
+bottomPipeImage.src = "assets/bottom-pipe.png"; // Path to your bottom pipe image
 
 // Create initial pipes
 function createPipe() {
@@ -25,21 +35,42 @@ function createPipe() {
   pipes.push({ x: canvas.width, y: gapY });
 }
 
-// Draw the bird
+// Draw the bird using image
 function drawBird() {
-  ctx.fillStyle = bird.color;
-  ctx.fillRect(bird.x, bird.y, bird.width, bird.height);
+  ctx.drawImage(birdImage, bird.x, bird.y, bird.width, bird.height); // Use the bird image instead of fillRect
 }
 
-// Draw the pipes
+// Draw the pipes using images
 function drawPipes() {
-  ctx.fillStyle = "green";
   pipes.forEach(pipe => {
     // Top pipe
-    ctx.fillRect(pipe.x, 0, PIPE_WIDTH, pipe.y - PIPE_GAP);
+    ctx.drawImage(topPipeImage, pipe.x, 0, PIPE_WIDTH, pipe.y); // Draw the top pipe image
     // Bottom pipe
-    ctx.fillRect(pipe.x, pipe.y, PIPE_WIDTH, canvas.height - pipe.y);
+    ctx.drawImage(bottomPipeImage, pipe.x, pipe.y + PIPE_GAP, PIPE_WIDTH, canvas.height - pipe.y); // Draw the bottom pipe image
   });
+}
+
+// Check for collision with pipes
+function checkCollision(pipe) {
+  // Check if the bird hits the top pipe
+  if (
+    bird.x + bird.width > pipe.x && 
+    bird.x < pipe.x + PIPE_WIDTH &&
+    bird.y < pipe.y // Bird above the top pipe
+  ) {
+    return true;
+  }
+
+  // Check if the bird hits the bottom pipe
+  if (
+    bird.x + bird.width > pipe.x &&
+    bird.x < pipe.x + PIPE_WIDTH &&
+    bird.y + bird.height > pipe.y + PIPE_GAP // Bird below the bottom pipe
+  ) {
+    return true;
+  }
+
+  return false;
 }
 
 // Update the game state
@@ -66,11 +97,7 @@ function update() {
 
   // Collision detection
   pipes.forEach(pipe => {
-    if (
-      bird.x < pipe.x + PIPE_WIDTH &&
-      bird.x + bird.width > pipe.x &&
-      (bird.y < pipe.y - PIPE_GAP || bird.y + bird.height > pipe.y)
-    ) {
+    if (checkCollision(pipe)) {
       bird.color = "gray";  // Change color on collision
       isGameOver = true;
     }
@@ -111,7 +138,7 @@ function gameLoop() {
 
 // Reset the game
 function resetGame() {
-  bird = { x: 50, y: 300, width: 30, height: 30, velocity: 0, color: "red" };
+  bird = { x: 50, y: 300, width: 50, height: 50, velocity: 0 }; // Reset bird size
   pipes = [];
   score = 0;
   isGameOver = false;
